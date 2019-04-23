@@ -21,4 +21,8 @@ fi
 
 appcenter codepush release-react -a $app_id --token $api_token --quiet $options --deployment-name $deployment
 
+
+LABEL=`appcenter codepush deployment list -a $app_id --token $api_token --output json | jq ".[] | if index(\"$deployment\") == 0 then .[1] else null end | select(.) | split(\"\n\") | .[0] | split(\": \") | .[1]"`
+envman add --key CODEPUSH_LABEL --value $LABEL
+
 exit 0
