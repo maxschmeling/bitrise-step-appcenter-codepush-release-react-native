@@ -19,7 +19,7 @@ if [ ! -z "${react_native_project_root}" ] ; then
     fi
 fi
 
-appcenter codepush release-react -a $app_id --token $api_token --quiet $options --deployment-name $deployment --description $release_description
+appcenter codepush release-react -a $app_id --token $api_token --quiet $options --deployment-name $deployment --description "$release_description"
 
 LABEL=`appcenter codepush deployment list -a $app_id --token $api_token --output json | jq ".[] | if index(\"$deployment\") == 0 then .[1] else null end | select(.) | split(\"\n\") | .[0] | split(\": \") | .[1]" | tr -d '"'`
 envman add --key CODEPUSH_LABEL --value $LABEL
