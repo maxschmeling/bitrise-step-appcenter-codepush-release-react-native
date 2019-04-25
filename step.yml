@@ -62,6 +62,12 @@ inputs:
       description: |
         This specifies which deployment you want to release the update to. This defaults to Staging, but when you're ready to deploy to Production, or one of your own custom deployments, just explicitly set this argument. See [here](https://docs.microsoft.com/en-us/appcenter/distribution/codepush/cli#deployment-name-parameter) for details.
       is_required: true
+  - release_description: $RELEASE_DESCRIPTION
+    opts:
+      title: Release Description
+      description: |
+        Used for the tag message and CodePush label description.
+      is_required: false
   - options:
     opts:
       title: Extra Options
